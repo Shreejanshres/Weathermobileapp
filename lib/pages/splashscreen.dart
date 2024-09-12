@@ -6,7 +6,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:weatherapp/core/colors.dart';
 import 'package:weatherapp/cubit/weather_cubit.dart';
 import 'package:weatherapp/cubit/weather_state.dart';
-// import 'package:weatherapp/screens/weather_screen.dart';
+import 'package:weatherapp/pages/weatherscreen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -54,7 +54,6 @@ class _SplashScreenState extends State<SplashScreen> {
     return BlocBuilder<WeatherCubit, WeatherState>(
       builder: (context, state) {
         if (state is WeatherInitial || state is WeatherLoading) {
-          // Show splash screen when loading or in initial state
           return const Scaffold(
             backgroundColor: AppColor.blue,
             body: Center(
@@ -76,14 +75,11 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           );
         } else if (state is WeatherLoaded) {
-          // Navigate to the WeatherScreen when the weather data is loaded
-          
-          // Future.microtask(() => Navigator.pushReplacement(
-          //       context,
-          //       MaterialPageRoute(
-          //           builder: (context) =>
-          //               WeatherScreen(weather: state.weather)),
-          //     ));
+
+          Future.microtask(() => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => WeatherScreen()),
+              ));
         } else if (state is WeatherError) {
           // Display error message
           return Scaffold(

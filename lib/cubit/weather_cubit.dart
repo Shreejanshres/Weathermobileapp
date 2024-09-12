@@ -9,6 +9,7 @@ class WeatherCubit extends Cubit<WeatherState> {
   WeatherCubit(this.city) : super(WeatherInitial());
 
   void getweather(String city) async {
+    print(city);
     try {
       emit(WeatherLoading());
       final weather = await _weatherRepository.fetchWeather(city);
