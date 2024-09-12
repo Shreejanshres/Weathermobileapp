@@ -1,0 +1,11 @@
+[
+  {
+    "key": "f5",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Start Android Emulator"
+  },
+  {
+    "key": "f5",
+    "command": "dart.debugFlutterApp"
+  }
+]

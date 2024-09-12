@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp/pages/splashscreen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weatherapp/cubit/weather_cubit.dart';
+import 'package:weatherapp/Pages/splashscreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Weather App',
-      home: Splashscreen(),
+    return BlocProvider(
+      create: (context) => WeatherCubit('kathmandu'), // Set a default city
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Weather App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const SplashScreen(),
+      ),
     );
   }
 }
